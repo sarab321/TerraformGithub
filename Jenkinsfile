@@ -39,7 +39,7 @@ pipeline{
                 expression { params.REQUESTED_ACTION == 'Destroy'}
             }
             steps{
-            sh 'terraform destroy tfplan'
+            sh 'terraform destroy --auto-approve'
         }
         }
     }
