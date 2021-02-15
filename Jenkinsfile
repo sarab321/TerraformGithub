@@ -4,7 +4,7 @@ pipeline{
 
     parameters {
         choice (
-            choices: ['Deploy' , 'Desttroy']
+            choices: ['Deploy' , 'Desttroy'],
             description: 'Which action?',
             name: 'REQUESTED_ACTION')
     }
