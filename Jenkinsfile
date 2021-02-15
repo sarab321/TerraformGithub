@@ -14,7 +14,7 @@ pipeline{
         }
         stage("Terraform Plan"){
             steps{
-            sh 'terraform plan'
+            sh 'terraform plan -out=tfplan'
         }
         }
         stage("Deploy - Approval"){
@@ -22,7 +22,7 @@ pipeline{
                 expression { params.REQUESTED_ACTION == 'Deploy'}
             }
             steps{
-            sh 'terraform apply --auto-approve'
+            sh 'terraform apply tfplan'
         }
         }
 
@@ -31,8 +31,10 @@ pipeline{
                 expression { params.REQUESTED_ACTION == 'Destroy'}
             }
             steps{
-            sh 'terraform destroy --auto-approve'
+            sh 'terraform destroy tfplan'
         }
         }
     }
 }
+
+
