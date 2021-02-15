@@ -26,7 +26,7 @@ pipeline{
         }
         }
 
-        stage("Deploy - Approval"){
+        stage("Destroy - Approval"){
             when {
                 expression { params.REQUESTED_ACTION == 'Destroy'}
             }
