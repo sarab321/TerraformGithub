@@ -5,7 +5,7 @@ resource "aws_instance" "bmo-ec2-instance" {
   subnet_id = aws_subnet.bmo_public_subnet.id
 
   tags = {
-    Name = "bmo-terraform-ec2-instance-${var.environment}"
+    Name = "bmo-terraform-ec2-instancetest-${var.environment}"
   }
 }
 
