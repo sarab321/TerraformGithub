@@ -1,3 +1,4 @@
+
 pipeline{
     agent { node { label 'slave1'} }
     stages{
@@ -16,13 +17,19 @@ pipeline{
             sh 'terraform plan'
         }
         }
-        stage("Terraform Apply"){
+        stage("Deploy - Approval"){
+            when {
+                expression { params.REQUESTED_ACTION == 'Deploy'}
+            }
             steps{
             sh 'terraform apply --auto-approve'
         }
         }
 
-        stage("Terraform Destroy"){
+        stage("Deploy - Approval"){
+            when {
+                expression { params.REQUESTED_ACTION == 'Destroy'}
+            }
             steps{
             sh 'terraform destroy --auto-approve'
         }
