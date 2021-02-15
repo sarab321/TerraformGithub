@@ -1,6 +1,14 @@
 
 pipeline{
     agent { node { label 'slave1'} }
+
+    parameters {
+        choice (
+            choices: ['Deploy' , 'Desttroy']
+            description: 'Which action?',
+            name: 'REQUESTED_ACTION')
+    }
+
     stages{
         stage("Git Checkout"){
             steps {
